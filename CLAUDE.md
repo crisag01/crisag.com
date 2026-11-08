@@ -15,12 +15,14 @@ Idioma de la página y de los mensajes de commit: español de México.
   (se eligió así a propósito para no cansar la vista de noche).
 
 ## CUIDADO con el tamaño del archivo
-`index.html` pesa unos 1.7 MB porque lleva imágenes y el CV en base64, en cuatro líneas gigantescas:
+`index.html` pesa unos 1.8 MB porque lleva imágenes y el CV en base64, en cinco líneas gigantescas:
 - `window.CRISAG_ASSETS`: el retrato, su máscara y el CV en PDF.
 - `window.CRISAG_RUNNER`: la foto runner y su máscara (para el retrato de Perfil).
 - `window.CRISAG_DESARROLLO`: las fotos del maratón y del fútbol (pantalla Desarrollo personal).
 - `window.CRISAG_HERRAMIENTAS`: los logos de herramientas de la pantalla Habilidades técnicas
   (lista `.tools-grid`; cada `<img data-tool="...">` toma su logo de este bloque).
+- `window.CRISAG_TRAYECTORIA`: logos de las tarjetas de Trayectoria (Lubrizol, UNAM, preparatoria,
+  Duolingo, Platzi, Google, MATLAB, Lean Six Sigma); cada `<img data-xp="...">` toma su logo de aquí.
 - No imprimas ni leas el archivo completo. Busca con `grep -n` y lee solo rangos de líneas.
 - No reescribas el archivo completo: haz ediciones puntuales sobre texto único.
 - Nunca modifiques ni muestres las cadenas base64.
@@ -28,6 +30,10 @@ Idioma de la página y de los mensajes de commit: español de México.
 ## Dónde está cada cosa
 - Contacto (correo, LinkedIn, GitHub): objeto `CONFIG` al inicio del `<script>` final.
 - Textos de proyectos y trayectoria: dentro de `<div class="view" id="v-...">`.
+- Trayectoria: cuatro carruseles de tarjetas (`.xp`), en este orden: Experiencia (`#xp`), Certificaciones
+  (`#xp-cert`, cada tarjeta con su botón "Ver credencial"), Habilidades (`#xp-hab`) y Educación (`#xp-edu`).
+  Un solo script mueve todos; al entrar a `#trayectoria` cada uno se centra en la tarjeta del medio
+  (o en la que diga `data-start`).
 - Colores del tema Noche: bloque `/* Tema Noche */` al final del `<style>`.
 - Espacio de arriba en computadora (altura del menú y del contenido de todas las pantallas): bloque
   `@media (min-width:761px)` "Menos espacio arriba…", lo último antes de `</style>`. En celular no aplica.
