@@ -25,6 +25,8 @@ Idioma de la página y de los mensajes de commit: español de México.
   (lista `.tools-grid`; cada `<img data-tool="...">` toma su logo de este bloque).
 - `window.CRISAG_TRAYECTORIA`: logos de las tarjetas de Trayectoria (Lubrizol, UNAM, preparatoria,
   Duolingo, Platzi, Google, MATLAB, Lean Six Sigma); cada `<img data-xp="...">` toma su logo de aquí.
+- En el `<head>`: favicon (`<link rel="icon">`, 64 px transparente) e ícono de iPhone
+  (`<link rel="apple-touch-icon">`, 180 px fondo crema), también en base64.
 - No imprimas ni leas el archivo completo. Busca con `grep -n` y lee solo rangos de líneas.
 - No reescribas el archivo completo: haz ediciones puntuales sobre texto único.
 - Nunca modifiques ni muestres las cadenas base64.
