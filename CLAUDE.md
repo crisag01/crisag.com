@@ -9,13 +9,16 @@ Idioma de la página y de los mensajes de commit: español de México.
   El archivo `CNAME` (contiene `crisag.com`) es necesario para el dominio: no borrarlo ni renombrarlo.
 - Cinco pantallas dentro del mismo archivo: `v-inicio`, `v-perfil`, `v-proyectos`, `v-trayectoria`, `v-contacto`.
   Se navega con `#inicio`, `#perfil`, `#proyectos`, `#trayectoria`, `#contacto` (no cambiar esos nombres).
+- Dos pantallas más que se abren desde Perfil (no están en el menú; mientras se ven, el menú marca Perfil):
+  `v-habilidades` (`#habilidades`) y `v-desarrollo` (`#desarrollo`), cada una con "← Volver a Perfil".
 - El tema es "Noche": fondo `#1a1613`, texto `#e6dccd`. No usar negro puro ni blanco puro
   (se eligió así a propósito para no cansar la vista de noche).
 
 ## CUIDADO con el tamaño del archivo
-`index.html` pesa unos 1.25 MB porque lleva imágenes y el CV en base64, en dos líneas gigantescas:
+`index.html` pesa unos 1.6 MB porque lleva imágenes y el CV en base64, en tres líneas gigantescas:
 - `window.CRISAG_ASSETS`: el retrato, su máscara y el CV en PDF.
 - `window.CRISAG_RUNNER`: la foto runner y su máscara (para el retrato de Perfil).
+- `window.CRISAG_DESARROLLO`: las fotos del maratón y del fútbol (pantalla Desarrollo personal).
 - No imprimas ni leas el archivo completo. Busca con `grep -n` y lee solo rangos de líneas.
 - No reescribas el archivo completo: haz ediciones puntuales sobre texto único.
 - Nunca modifiques ni muestres las cadenas base64.
@@ -27,7 +30,9 @@ Idioma de la página y de los mensajes de commit: español de México.
 - Retrato animado de Inicio: función `initPortrait()` (WebGL, canvas `#c`). No tocar el shader sin avisar.
 - Retrato ingeniero / runner de Perfil: sección `.runner` al inicio de `v-perfil` (canvas `#c2`) y su
   propio `<script>` al final del archivo, después de `CRISAG_RUNNER`. Reutiliza `CRISAG_ASSETS.img`.
-  Tampoco tocar su shader sin avisar.
+  Tampoco tocar su shader sin avisar. El runner va a la izquierda y el ingeniero a la derecha.
+- Textos 3D de Perfil: botones `.runner-btn` ("Desarrollo Personal" a la izquierda → `#desarrollo`,
+  "Habilidades Técnicas" a la derecha → `#habilidades`).
 
 ## Reglas de Git (importante)
 - Nunca hagas commit directo en `main`.
