@@ -5,15 +5,17 @@ Idioma de la página y de los mensajes de commit: español de México.
 
 ## Qué es este proyecto
 - Una sola página estática: `index.html` (HTML + CSS + JS dentro del mismo archivo, sin frameworks ni build).
-- Se publica con GitHub Pages desde la rama `main`, carpeta raíz.
+- Se publica con GitHub Pages desde la rama `main`, carpeta raíz, en el dominio `crisag.com`.
+  El archivo `CNAME` (contiene `crisag.com`) es necesario para el dominio: no borrarlo ni renombrarlo.
 - Cinco pantallas dentro del mismo archivo: `v-inicio`, `v-perfil`, `v-proyectos`, `v-trayectoria`, `v-contacto`.
   Se navega con `#inicio`, `#perfil`, `#proyectos`, `#trayectoria`, `#contacto` (no cambiar esos nombres).
 - El tema es "Noche": fondo `#1a1613`, texto `#e6dccd`. No usar negro puro ni blanco puro
   (se eligió así a propósito para no cansar la vista de noche).
 
 ## CUIDADO con el tamaño del archivo
-`index.html` pesa unos 0.8 MB porque lleva incrustados el retrato, su máscara y el CV en PDF
-(en `window.CRISAG_ASSETS`, una línea gigantesca en base64).
+`index.html` pesa unos 1.25 MB porque lleva imágenes y el CV en base64, en dos líneas gigantescas:
+- `window.CRISAG_ASSETS`: el retrato, su máscara y el CV en PDF.
+- `window.CRISAG_RUNNER`: la foto runner y su máscara (para el retrato de Perfil).
 - No imprimas ni leas el archivo completo. Busca con `grep -n` y lee solo rangos de líneas.
 - No reescribas el archivo completo: haz ediciones puntuales sobre texto único.
 - Nunca modifiques ni muestres las cadenas base64.
@@ -22,7 +24,10 @@ Idioma de la página y de los mensajes de commit: español de México.
 - Contacto (correo, LinkedIn, GitHub): objeto `CONFIG` al inicio del `<script>` final.
 - Textos de proyectos y trayectoria: dentro de `<div class="view" id="v-...">`.
 - Colores del tema Noche: bloque `/* Tema Noche */` al final del `<style>`.
-- Retrato animado: función `initPortrait()` (WebGL). No tocar el shader sin avisar.
+- Retrato animado de Inicio: función `initPortrait()` (WebGL, canvas `#c`). No tocar el shader sin avisar.
+- Retrato ingeniero / runner de Perfil: sección `.runner` al inicio de `v-perfil` (canvas `#c2`) y su
+  propio `<script>` al final del archivo, después de `CRISAG_RUNNER`. Reutiliza `CRISAG_ASSETS.img`.
+  Tampoco tocar su shader sin avisar.
 
 ## Reglas de Git (importante)
 - Nunca hagas commit directo en `main`.
