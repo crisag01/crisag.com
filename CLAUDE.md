@@ -5,6 +5,8 @@ Idioma de la página y de los mensajes de commit: español de México.
 
 ## Qué es este proyecto
 - Una sola página estática: `index.html` (HTML + CSS + JS dentro del mismo archivo, sin frameworks ni build).
+  ÚNICA excepción: el CV va como archivo aparte, `CV_Cristian_Armenta.pdf`, junto a `index.html`
+  (incrustado en base64 no se descargaba en iPhone). Todo lo demás se queda dentro de `index.html`.
 - Se publica con GitHub Pages desde la rama `main`, carpeta raíz, en el dominio `crisag.com`.
   El archivo `CNAME` (contiene `crisag.com`) es necesario para el dominio: no borrarlo ni renombrarlo.
 - Cinco pantallas dentro del mismo archivo: `v-inicio`, `v-perfil`, `v-proyectos`, `v-trayectoria`, `v-contacto`.
@@ -15,8 +17,8 @@ Idioma de la página y de los mensajes de commit: español de México.
   (se eligió así a propósito para no cansar la vista de noche).
 
 ## CUIDADO con el tamaño del archivo
-`index.html` pesa unos 1.8 MB porque lleva imágenes y el CV en base64, en cinco líneas gigantescas:
-- `window.CRISAG_ASSETS`: el retrato, su máscara y el CV en PDF.
+`index.html` pesa unos 1.8 MB porque lleva las imágenes en base64, en cinco líneas gigantescas:
+- `window.CRISAG_ASSETS`: el retrato de Inicio y su máscara.
 - `window.CRISAG_RUNNER`: la foto runner y su máscara (para el retrato de Perfil).
 - `window.CRISAG_DESARROLLO`: las fotos del maratón y del fútbol (pantalla Desarrollo personal).
 - `window.CRISAG_HERRAMIENTAS`: los logos de herramientas de la pantalla Habilidades técnicas
