@@ -352,6 +352,8 @@ body{color:#e6dccd}
 .dev-first .dev-tx{grid-column:2;grid-row:2}
 .dev-back{display:inline-block;padding:calc(6*var(--u)) 0;font-size:calc(16*var(--u));color:#b8ad9d;transition:color .2s}
 .dev-back:hover{color:#e6dccd}
+/* Trayectoria: título centrado */
+#v-trayectoria .shead{justify-content:center;align-items:center;text-align:center}
 /* Habilidades técnicas: logos de herramientas debajo de la frase */
 #v-habilidades .statement{padding-bottom:calc(80*var(--u))}
 .tools{padding:0 0 calc(150*var(--u))}
@@ -387,6 +389,17 @@ body{color:#e6dccd}
 
 .ready .rise,.ready .rise-nav{opacity:1!important}
 
+/* Menos espacio arriba en computadora: el menú sube 65u y el contenido queda más cerca de él (en celular no cambia) */
+@media (min-width:761px){
+  .nav{top:calc(30*var(--u))}
+  .hero{height:calc(823*var(--u))}
+  .art{top:calc(-115*var(--u))}
+  .meta{top:calc(158*var(--u))}
+  .pg{padding-top:calc(135*var(--u))}
+  .runner{margin-top:calc(-135*var(--u))}
+  .runner-btn{top:calc(145*var(--u))}
+  #v-desarrollo .dev-back,#v-habilidades .dev-back{top:calc(46*var(--u))}
+}
 </style>
 </head>
 <body data-page="inicio">
@@ -582,7 +595,6 @@ body{color:#e6dccd}
 <section class="sec" aria-label="Trayectoria">
   <div class="shead">
     <h2 class="disp">Trayectoria</h2>
-    <p>Experiencia, estudios y habilidades. El detalle completo está en mi <a class="tl-link" data-cv download href="#">CV en PDF</a>.</p>
   </div>
   <div class="glabel">Experiencia</div>
   <div class="tl">
