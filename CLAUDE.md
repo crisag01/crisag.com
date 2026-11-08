@@ -29,6 +29,8 @@ Idioma de la página y de los mensajes de commit: español de México.
 - Contacto (correo, LinkedIn, GitHub): objeto `CONFIG` al inicio del `<script>` final.
 - Textos de proyectos y trayectoria: dentro de `<div class="view" id="v-...">`.
 - Colores del tema Noche: bloque `/* Tema Noche */` al final del `<style>`.
+- Espacio de arriba en computadora (altura del menú y del contenido de todas las pantallas): bloque
+  `@media (min-width:761px)` "Menos espacio arriba…", lo último antes de `</style>`. En celular no aplica.
 - Retrato animado de Inicio: función `initPortrait()` (WebGL, canvas `#c`). No tocar el shader sin avisar.
 - Retrato ingeniero / runner de Perfil: sección `.runner` al inicio de `v-perfil` (canvas `#c2`) y su
   propio `<script>` al final del archivo, después de `CRISAG_RUNNER`. Reutiliza `CRISAG_ASSETS.img`.
