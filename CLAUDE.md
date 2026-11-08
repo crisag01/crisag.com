@@ -43,6 +43,9 @@ Idioma de la página y de los mensajes de commit: español de México.
   Tampoco tocar su shader sin avisar. El runner va a la izquierda y el ingeniero a la derecha.
 - Textos 3D de Perfil: botones `.runner-btn` ("Desarrollo Personal" a la izquierda → `#desarrollo`,
   "Habilidades Técnicas" a la derecha → `#habilidades`).
+  Invitación al clic: cada 3 s los botones saltan (`.nudge`, animación `rbInvita`) y un trazo `.rb-guide`
+  nace en los hombros, da una vuelta y apunta a cada botón (`drawGuide()` en el script del retrato de Perfil;
+  el punto de inicio es la constante `NECK`). Se detiene al primer contacto y vuelve a empezar al entrar a Perfil.
 
 ## Reglas de Git (importante)
 - Nunca hagas commit directo en `main`.
