@@ -15,10 +15,12 @@ Idioma de la página y de los mensajes de commit: español de México.
   (se eligió así a propósito para no cansar la vista de noche).
 
 ## CUIDADO con el tamaño del archivo
-`index.html` pesa unos 1.6 MB porque lleva imágenes y el CV en base64, en tres líneas gigantescas:
+`index.html` pesa unos 1.7 MB porque lleva imágenes y el CV en base64, en cuatro líneas gigantescas:
 - `window.CRISAG_ASSETS`: el retrato, su máscara y el CV en PDF.
 - `window.CRISAG_RUNNER`: la foto runner y su máscara (para el retrato de Perfil).
 - `window.CRISAG_DESARROLLO`: las fotos del maratón y del fútbol (pantalla Desarrollo personal).
+- `window.CRISAG_HERRAMIENTAS`: los logos de herramientas de la pantalla Habilidades técnicas
+  (lista `.tools-grid`; cada `<img data-tool="...">` toma su logo de este bloque).
 - No imprimas ni leas el archivo completo. Busca con `grep -n` y lee solo rangos de líneas.
 - No reescribas el archivo completo: haz ediciones puntuales sobre texto único.
 - Nunca modifiques ni muestres las cadenas base64.
