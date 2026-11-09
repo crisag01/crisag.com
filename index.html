@@ -382,7 +382,57 @@ body{color:#e6dccd}
 .dev-back{display:inline-block;padding:calc(6*var(--u)) 0;font-size:calc(16*var(--u));color:#b8ad9d;transition:color .2s}
 .dev-back:hover{color:#e6dccd}
 /* Trayectoria: título centrado */
-#v-trayectoria .shead{justify-content:center;align-items:center;text-align:center}
+#v-trayectoria .shead,#v-proyectos .shead{justify-content:center;align-items:center;text-align:center}
+#v-proyectos .shead{margin-bottom:calc(18*var(--u))}
+/* Proyectos: cada tarjeta abre una ventana de detalle (#pm) */
+#v-proyectos .proj{cursor:pointer}
+#v-proyectos .proj:focus-visible{outline:2px solid #e6dccd;outline-offset:4px}
+.pm{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(12,9,6,.74);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;transition:opacity .25s}
+.pm[hidden]{display:none}
+.pm.open{opacity:1}
+.pm-box{position:relative;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);grid-template-rows:auto auto 1fr;gap:calc(16*var(--u)) calc(30*var(--u));width:min(calc(1120*var(--u)),100%);max-height:calc(100vh - 48px);overflow:auto;padding:calc(30*var(--u));border-radius:calc(20*var(--u));background:#231d18;box-shadow:0 0 0 1px rgba(230,220,205,.18),0 30px 80px rgba(0,0,0,.55);transform:translateY(14px) scale(.98);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.pm.open .pm-box{transform:none}
+.pm-close{position:absolute;top:calc(12*var(--u));right:calc(12*var(--u));z-index:2;width:calc(40*var(--u));height:calc(40*var(--u));border:0;border-radius:50%;background:rgba(230,220,205,.12);color:#e6dccd;font:inherit;font-size:calc(24*var(--u));line-height:1;cursor:pointer}
+.pm-close:hover{background:rgba(230,220,205,.22)}
+.pm-img{grid-row:1/4;position:relative;display:block;min-height:calc(420*var(--u));border-radius:calc(14*var(--u));overflow:hidden;background:#17120d;box-shadow:0 0 0 1px rgba(230,220,205,.12)}
+.pm-img svg{position:absolute;inset:0;width:100%;height:100%}
+a.pm-img:hover svg{transform:scale(1.04);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.pm-go{position:absolute;left:calc(14*var(--u));bottom:calc(14*var(--u));padding:calc(9*var(--u)) calc(16*var(--u));border-radius:calc(30*var(--u));background:#e6dccd;color:#1a1613;font-size:calc(14*var(--u))}
+.pm-title{margin:calc(8*var(--u)) calc(44*var(--u)) 0 0;font-size:calc(34*var(--u));line-height:1.02;color:#efe6d8}
+.pm-desc p{margin:0;font-size:calc(16*var(--u));line-height:1.55;color:#c9bfaf}
+.pm-desc .tags{margin-top:calc(14*var(--u))}
+.pm-code{display:flex;flex-direction:column;min-height:0}
+.pm-code[hidden]{display:none}
+.pm-code-h{margin-bottom:calc(8*var(--u));font-size:calc(12*var(--u));letter-spacing:.08em;text-transform:uppercase;color:#a89c8b}
+.pm-code pre{flex:1;margin:0;min-height:calc(150*var(--u));max-height:calc(300*var(--u));overflow:auto;padding:calc(16*var(--u));border-radius:calc(12*var(--u));background:#17120d;box-shadow:0 0 0 1px rgba(230,220,205,.1);font:calc(13*var(--u))/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#e6dccd;white-space:pre}
+.pm-code pre.vacio,.pm-code pre.vacio code{white-space:normal;font-family:"Inter Tight",system-ui,sans-serif;font-style:italic;color:#8f8577}
+@media (max-width:760px){
+  .pm{padding:10px;align-items:flex-end}
+  .pm-box{grid-template-columns:1fr;grid-template-rows:none;gap:14px;padding:16px;max-height:calc(100vh - 20px);border-radius:18px}
+  .pm-img{grid-row:auto;min-height:200px}
+  .pm-close{width:36px;height:36px;font-size:22px;top:10px;right:10px}
+  .pm-title{font-size:24px;margin-right:40px}
+  .pm-desc p{font-size:14.5px}
+  .pm-code pre{font-size:12px;max-height:240px}}
+/* Proyectos: tarjetas como las de Trayectoria, en filas de 3 (la última fila queda centrada) */
+#v-proyectos .panel{display:flex;flex-wrap:wrap;justify-content:center;gap:calc(28*var(--u));border:0;border-radius:0;overflow:visible;padding:calc(10*var(--u)) 0 0}
+#v-proyectos .proj{flex:0 0 calc((100% - 2*28*var(--u))/3);display:flex;flex-direction:column;gap:0;padding:0;border:0;border-radius:calc(18*var(--u));overflow:hidden;background:#231d18;box-shadow:0 0 0 1px rgba(230,220,205,.16),0 calc(18*var(--u)) calc(44*var(--u)) rgba(12,9,6,.38);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+#v-proyectos .proj:hover{transform:translateY(calc(-4*var(--u)));box-shadow:0 0 0 1px rgba(230,220,205,.26),0 calc(24*var(--u)) calc(56*var(--u)) rgba(12,9,6,.45)}
+#v-proyectos .proj .vis{height:calc(220*var(--u));border-radius:0;box-shadow:none}
+#v-proyectos .proj .info{flex:1;padding:calc(24*var(--u)) calc(26*var(--u)) calc(28*var(--u))}
+#v-proyectos .proj .top{flex-direction:column;gap:calc(12*var(--u))}
+#v-proyectos .proj h3{font-size:calc(28*var(--u));line-height:1.04;max-width:none;color:#efe6d8;order:1}
+#v-proyectos .proj .yr{order:0;align-self:flex-start;background:#a88b6b;color:#1a1613;border:0}
+#v-proyectos .proj p{max-width:none;margin-top:calc(14*var(--u));font-size:calc(15*var(--u));line-height:1.5}
+#v-proyectos .tags{margin-top:calc(20*var(--u))}
+@media (max-width:960px) and (min-width:761px){#v-proyectos .proj{flex-basis:calc((100% - 28*var(--u))/2)}}
+@media (max-width:760px){
+  #v-proyectos .panel{gap:18px}
+  #v-proyectos .proj{flex-basis:100%}
+  #v-proyectos .proj .vis{height:200px}
+  #v-proyectos .proj .info{padding:18px 18px 22px}
+  #v-proyectos .proj h3{font-size:22px}
+  #v-proyectos .proj p{font-size:14px}}
 /* Habilidades técnicas: logos de herramientas debajo de la frase */
 #v-habilidades .statement{padding-bottom:calc(80*var(--u))}
 .tools{padding:0 0 calc(150*var(--u))}
@@ -643,7 +693,6 @@ body{color:#e6dccd}
 <section class="sec" aria-label="Proyectos">
   <div class="shead">
     <h2 class="disp">Proyectos</h2>
-    <p>Resultados concretos: datos atrapados en PDF, consultas que tardaban minutos y decisiones de precio sin evidencia.</p>
   </div>
   <div class="panel">
     <article class="proj">
@@ -676,7 +725,7 @@ body{color:#e6dccd}
         <ul class="tags"><li>Análisis de datos</li><li>Correlación</li><li>Precios</li></ul>
       </div>
     </article>
-    <article class="proj">
+    <article class="proj" data-link="https://nasa-fire-guardians.vercel.app/map" data-link-label="Ver sitio web">
       <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Un globo con órbitas y una llama"><use href="#v-fire" width="430" height="270"/></svg></div>
       <div class="info">
         <div>
@@ -698,6 +747,15 @@ body{color:#e6dccd}
     </article>
   </div>
 </section>
+<div class="pm" id="pm" role="dialog" aria-modal="true" aria-labelledby="pm-title" hidden>
+  <div class="pm-box">
+    <button type="button" class="pm-close" aria-label="Cerrar">×</button>
+    <div class="pm-img"></div>
+    <h3 class="disp pm-title" id="pm-title"></h3>
+    <div class="pm-desc"></div>
+    <div class="pm-code"><div class="pm-code-h">Código</div><pre><code></code></pre></div>
+  </div>
+</div>
 </div>
 <div class="view pg" id="v-trayectoria">
 <section class="sec" aria-label="Trayectoria">
@@ -1770,5 +1828,46 @@ document.querySelectorAll(".xp").forEach(function(xp){
   var mid=xp.dataset.start?+xp.dataset.start:Math.floor(cards.length/2); go(mid);
   addEventListener("hashchange",function(){if(location.hash==="#trayectoria")go(mid)});
 });</script>
+<script>
+/* ─── Proyectos: ventana de detalle ─── */
+(function(){
+  var pm=document.getElementById("pm"); if(!pm) return;
+  var box=pm.querySelector(".pm-box"), img=pm.querySelector(".pm-img"), title=pm.querySelector(".pm-title"),
+      desc=pm.querySelector(".pm-desc"), code=pm.querySelector(".pm-code code"), pre=pm.querySelector(".pm-code pre"),
+      closeBtn=pm.querySelector(".pm-close"), last=null;
+  function open(card){
+    last=card;
+    var link=card.dataset.link, vis=card.querySelector(".vis").innerHTML;
+    var holder=document.createElement(link?"a":"div"); holder.className="pm-img";
+    if(link){ holder.href=link; holder.target="_blank"; holder.rel="noopener"; holder.setAttribute("aria-label",(card.dataset.linkLabel||"Abrir enlace")+" (se abre en otra pestaña)"); }
+    holder.innerHTML=vis+(link?'<span class="pm-go">'+(card.dataset.linkLabel||"Abrir")+' ↗</span>':"");
+    box.replaceChild(holder, box.querySelector(".pm-img")); img=holder;
+    title.textContent=card.querySelector("h3").textContent;
+    desc.innerHTML=""; desc.appendChild(card.querySelector(".info p").cloneNode(true)); desc.appendChild(card.querySelector(".tags").cloneNode(true));
+    var t=card.querySelector("template.proj-code");
+    // el recuadro de código solo aparece si el proyecto tiene <template class="proj-code"> con código
+    var codeBox=pm.querySelector(".pm-code");
+    if(t){ code.textContent=t.innerHTML.replace(/^\n+|\s+$/g,""); codeBox.hidden=false; }
+    else { code.textContent=""; codeBox.hidden=true; }
+    pm.hidden=false; document.documentElement.style.overflow="hidden";
+    requestAnimationFrame(function(){ pm.classList.add("open"); closeBtn.focus(); });
+  }
+  function close(){
+    pm.classList.remove("open"); document.documentElement.style.overflow="";
+    setTimeout(function(){ pm.hidden=true; }, 250);
+    if(last) last.focus();
+  }
+  document.querySelectorAll("#v-proyectos .proj").forEach(function(card){
+    card.setAttribute("tabindex","0"); card.setAttribute("role","button");
+    card.setAttribute("aria-label","Ver detalles: "+card.querySelector("h3").textContent);
+    card.addEventListener("click",function(){ open(card); });
+    card.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(card); } });
+  });
+  closeBtn.addEventListener("click",close);
+  pm.addEventListener("click",function(e){ if(e.target===pm) close(); });
+  addEventListener("keydown",function(e){ if(e.key==="Escape"&&!pm.hidden) close(); });
+  addEventListener("hashchange",function(){ if(!pm.hidden) close(); });
+})();
+</script>
 </body>
 </html>

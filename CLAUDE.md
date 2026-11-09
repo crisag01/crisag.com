@@ -34,6 +34,10 @@ Idioma de la página y de los mensajes de commit: español de México.
 ## Dónde está cada cosa
 - Contacto (correo, LinkedIn, GitHub): objeto `CONFIG` al inicio del `<script>` final.
 - Textos de proyectos y trayectoria: dentro de `<div class="view" id="v-...">`.
+- Proyectos: tarjetas `<article class="proj">` en filas de 3 (la última fila se centra sola). Cada tarjeta abre
+  la ventana de detalle `#pm`. Para darle enlace a la imagen: `data-link="https://..."` (y opcional
+  `data-link-label="Ver repositorio"`). Para mostrar código: `<template class="proj-code">…</template>` dentro
+  del artículo; si no hay, el recuadro "Código" no aparece.
 - Trayectoria: cuatro carruseles de tarjetas (`.xp`), en este orden: Experiencia (`#xp`), Certificaciones
   (`#xp-cert`, cada tarjeta con su botón "Ver credencial"), Habilidades (`#xp-hab`) y Educación (`#xp-edu`).
   Un solo script mueve todos; al entrar a `#trayectoria` cada uno se centra en la tarjeta del medio
