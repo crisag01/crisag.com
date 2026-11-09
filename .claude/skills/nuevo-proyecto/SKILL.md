@@ -20,7 +20,8 @@ Cuando mande una llena (`.docx`):
 
 1. Cópiala a una carpeta nueva y vacía del scratchpad (no la abras dentro del repositorio).
 2. Lee el texto: `textutil -convert txt -stdout plantilla.docx`. Cada campo aparece como su etiqueta
-   (Título, Etiqueta, Descripción, Herramientas, Repositorio en GitHub, Sitio o demo, Posición, Imagen),
+   (Título, Etiqueta, Descripción, Herramientas, Contexto, Mi rol, Resultado, Repositorio en GitHub, Sitio o demo,
+   Posición, Imagen),
    una línea de ayuda y debajo lo que él escribió. Ignora los textos de ejemplo que no haya borrado
    ("Ej. …", "Escribe aquí…", "https://github.com/crisag01/…", "https://…", "Pega aquí la imagen…").
 3. Si pegó una imagen, sácala con `unzip -o plantilla.docx 'word/media/*' -d <carpeta>`
@@ -38,6 +39,9 @@ Título:
 Etiqueta (año o lugar, ej. "[2026]" o "Lubrizol"): 
 Descripción (2 a 4 líneas): 
 Herramientas (separadas por coma, 2 a 5): 
+Contexto (opcional, dónde o para quién lo hiciste): 
+Mi rol (opcional, qué hiciste tú): 
+Resultado (opcional, una cifra o logro concreto): 
 Repositorio en GitHub (o "ninguno"): 
 Sitio o demo (opcional): 
 Posición (ej. "al inicio", "al final", "después de Data Fire"; por defecto al inicio): 
@@ -46,6 +50,7 @@ Imagen (adjunta una captura, o escribe "ilustración" para que Claude la dibuje)
 
 Campos obligatorios: Título, Etiqueta, Descripción, Herramientas. Si falta alguno, pregúntalo antes de
 seguir; no lo inventes. Tampoco inventes enlaces: si dice "ninguno" o lo deja vacío, se omite.
+Contexto, Mi rol y Resultado son opcionales: si los deja vacíos (o con el "Ej. …"), se omiten; no los inventes.
 Si el repositorio parece de un proyecto de empresa (por ejemplo Lubrizol), recuérdale no publicar datos
 privados.
 
@@ -56,7 +61,8 @@ privados.
    `<article class="proj">` dentro de `#v-proyectos .panel`. Respeta la posición pedida.
 3. **Arma el artículo** copiando la estructura de los existentes:
    ```html
-   <article class="proj" data-link="URL" data-link-label="TEXTO DEL BOTÓN">
+   <article class="proj" data-link="URL" data-link-label="TEXTO DEL BOTÓN"
+            data-contexto="CONTEXTO" data-rol="MI ROL" data-resultado="RESULTADO">
      <div class="vis">IMAGEN</div>
      <div class="info">
        <div>
@@ -72,6 +78,8 @@ privados.
      Sin ninguno de los dos, quita `data-link` y `data-link-label`.
    - **Si tiene repositorio Y sitio**: repositorio en `data-link` (`data-link-label="Ver repositorio"`) y
      sitio en `data-link2` (`data-link2-label="Ver sitio web"`). Así está Data Fire.
+   - **Ficha del detalle** (`data-contexto`, `data-rol`, `data-resultado`): la ventana de detalle los muestra
+     como renglones bajo la descripción. Pon solo los que él llenó; si falta uno, quita ese atributo.
    - **Regla de los botones**: la ventana los dibuja sola. Van siempre sobre la imagen, abajo a la
      izquierda, ambos blancos/crema; nunca debajo de la descripción. Un clic en el resto de la imagen
      abre el primer enlace. No agregues botones a mano.

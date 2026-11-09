@@ -40,6 +40,9 @@ Idioma de la página y de los mensajes de commit: español de México.
   `data-link2-label`. REGLA: los botones de enlace van siempre sobre la imagen (abajo a la izquierda),
   todos blancos/crema, nunca debajo de la descripción; un clic en el resto de la imagen abre el primero. Para mostrar código: `<template class="proj-code">…</template>` dentro
   del artículo; si no hay, el recuadro "Código" no aparece.
+  Ficha opcional de la ventana de detalle: `data-contexto`, `data-rol` y `data-resultado` en el artículo
+  (renglones Contexto / Mi rol / Resultado; solo aparecen los que existan). Cada tarjeta recibe sola
+  su pie "Ver detalle →" y, si tiene enlaces, una pastilla sobre la imagen (las crea el script).
   Para agregar un proyecto nuevo usa el comando `/nuevo-proyecto` (`.claude/skills/nuevo-proyecto/SKILL.md`),
   que tiene los pasos. Cristian llena la plantilla de Word `.claude/plantillas/Plantilla_nuevo_proyecto.docx`.
   El código de los proyectos vive en sus repositorios de GitHub; las tarjetas enlazan a ellos.
