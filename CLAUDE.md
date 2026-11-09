@@ -36,7 +36,9 @@ Idioma de la página y de los mensajes de commit: español de México.
 - Textos de proyectos y trayectoria: dentro de `<div class="view" id="v-...">`.
 - Proyectos: tarjetas `<article class="proj">` en filas de 3 (la última fila se centra sola). Cada tarjeta abre
   la ventana de detalle `#pm`. Para darle enlace a la imagen: `data-link="https://..."` (y opcional
-  `data-link-label="Ver repositorio"`). Para mostrar código: `<template class="proj-code">…</template>` dentro
+  `data-link-label="Ver repositorio"`). Un segundo enlace (p. ej. el sitio) va en `data-link2` y
+  `data-link2-label`. REGLA: los botones de enlace van siempre sobre la imagen (abajo a la izquierda),
+  todos blancos/crema, nunca debajo de la descripción; un clic en el resto de la imagen abre el primero. Para mostrar código: `<template class="proj-code">…</template>` dentro
   del artículo; si no hay, el recuadro "Código" no aparece.
   Para agregar un proyecto nuevo usa el comando `/nuevo-proyecto` (`.claude/skills/nuevo-proyecto/SKILL.md`),
   que tiene los pasos. Cristian llena la plantilla de Word `.claude/plantillas/Plantilla_nuevo_proyecto.docx`.
