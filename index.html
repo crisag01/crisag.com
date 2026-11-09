@@ -396,8 +396,11 @@ body{color:#e6dccd}
 .pm-close:hover{background:rgba(230,220,205,.22)}
 .pm-img{grid-row:1/4;position:relative;display:block;min-height:calc(420*var(--u));border-radius:calc(14*var(--u));overflow:hidden;background:#17120d;box-shadow:0 0 0 1px rgba(230,220,205,.12)}
 .pm-img svg{position:absolute;inset:0;width:100%;height:100%}
-a.pm-img:hover svg{transform:scale(1.04);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.pm-go{position:absolute;left:calc(14*var(--u));bottom:calc(14*var(--u));padding:calc(9*var(--u)) calc(16*var(--u));border-radius:calc(30*var(--u));background:#e6dccd;color:#1a1613;font-size:calc(14*var(--u))}
+.pm-img.con-enlace:hover svg{transform:scale(1.04);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.pm-img.con-enlace{cursor:pointer}
+.pm-gos{position:absolute;left:calc(14*var(--u));bottom:calc(14*var(--u));right:calc(14*var(--u));display:flex;flex-wrap:wrap;gap:calc(10*var(--u))}
+.pm-go{display:inline-flex;align-items:center;gap:calc(7*var(--u));padding:calc(9*var(--u)) calc(16*var(--u));border-radius:calc(30*var(--u));background:#e6dccd;color:#1a1613;font-size:calc(14*var(--u));box-shadow:0 4px 14px rgba(12,9,6,.35);transition:transform .2s,background .2s}
+.pm-go:hover{transform:translateY(-2px);background:#f4ece0}
 .pm-title{margin:calc(8*var(--u)) calc(44*var(--u)) 0 0;font-size:calc(34*var(--u));line-height:1.02;color:#efe6d8}
 .pm-desc p{margin:0;font-size:calc(16*var(--u));line-height:1.55;color:#c9bfaf}
 .pm-desc .tags{margin-top:calc(14*var(--u))}
@@ -413,6 +416,7 @@ a.pm-img:hover svg{transform:scale(1.04);transition:transform .6s cubic-bezier(.
   .pm-close{width:36px;height:36px;font-size:22px;top:10px;right:10px}
   .pm-title{font-size:24px;margin-right:40px}
   .pm-desc p{font-size:14.5px}
+  .pm-go{font-size:13.5px;padding:8px 14px}
   .pm-code pre{font-size:12px;max-height:240px}}
 /* Proyectos: tarjetas como las de Trayectoria, en filas de 3 (la última fila queda centrada) */
 #v-proyectos .panel{display:flex;flex-wrap:wrap;justify-content:center;gap:calc(28*var(--u));border:0;border-radius:0;overflow:visible;padding:calc(10*var(--u)) 0 0}
@@ -725,7 +729,7 @@ a.pm-img:hover svg{transform:scale(1.04);transition:transform .6s cubic-bezier(.
         <ul class="tags"><li>Análisis de datos</li><li>Correlación</li><li>Precios</li></ul>
       </div>
     </article>
-    <article class="proj" data-link="https://nasa-fire-guardians.vercel.app/map" data-link-label="Ver sitio web">
+    <article class="proj" data-link="https://github.com/LaloRys/nasa-fire-guardians" data-link-label="Ver repositorio" data-link2="https://nasa-fire-guardians.vercel.app/map" data-link2-label="Ver sitio web">
       <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Un globo con órbitas y una llama"><use href="#v-fire" width="430" height="270"/></svg></div>
       <div class="info">
         <div>
@@ -1837,10 +1841,21 @@ document.querySelectorAll(".xp").forEach(function(xp){
       closeBtn=pm.querySelector(".pm-close"), last=null;
   function open(card){
     last=card;
-    var link=card.dataset.link, vis=card.querySelector(".vis").innerHTML;
-    var holder=document.createElement(link?"a":"div"); holder.className="pm-img";
-    if(link){ holder.href=link; holder.target="_blank"; holder.rel="noopener"; holder.setAttribute("aria-label",(card.dataset.linkLabel||"Abrir enlace")+" (se abre en otra pestaña)"); }
-    holder.innerHTML=vis+(link?'<span class="pm-go">'+(card.dataset.linkLabel||"Abrir")+' ↗</span>':"");
+    var vis=card.querySelector(".vis").innerHTML;
+    // enlaces del proyecto (repositorio y, opcional, sitio): siempre como botones blancos sobre la imagen
+    var links=[[card.dataset.link,card.dataset.linkLabel],[card.dataset.link2,card.dataset.link2Label]].filter(function(l){return l[0];});
+    var holder=document.createElement("div"); holder.className="pm-img"+(links.length?" con-enlace":"");
+    holder.innerHTML=vis;
+    if(links.length){
+      var gos=document.createElement("div"); gos.className="pm-gos";
+      links.forEach(function(l){
+        var a=document.createElement("a"); a.className="pm-go"; a.href=l[0]; a.target="_blank"; a.rel="noopener";
+        a.innerHTML=(l[1]||"Abrir")+' <span aria-hidden="true">↗</span>'; gos.appendChild(a);
+      });
+      holder.appendChild(gos);
+      // clic en cualquier otra parte de la imagen: abre el primer enlace (el repositorio)
+      holder.addEventListener("click",function(e){ if(!e.target.closest("a")) window.open(links[0][0],"_blank","noopener"); });
+    }
     box.replaceChild(holder, box.querySelector(".pm-img")); img=holder;
     title.textContent=card.querySelector("h3").textContent;
     desc.innerHTML=""; desc.appendChild(card.querySelector(".info p").cloneNode(true)); desc.appendChild(card.querySelector(".tags").cloneNode(true));

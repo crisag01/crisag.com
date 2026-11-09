@@ -70,9 +70,11 @@ privados.
    - **Enlace de la imagen** (`data-link`): el repositorio de GitHub, con `data-link-label="Ver repositorio"`.
      Si no tiene repositorio pero sí sitio o demo, usa el sitio con `data-link-label="Ver sitio web"`.
      Sin ninguno de los dos, quita `data-link` y `data-link-label`.
-   - **Si tiene repositorio Y sitio**: la ventana hoy solo muestra un botón. Pon el repositorio en la imagen
-     y avísale a Cristian que, para mostrar también el sitio, hay que agregar un segundo botón a la
-     ventana (`#pm`); pregúntale si lo hacemos en esa misma rama.
+   - **Si tiene repositorio Y sitio**: repositorio en `data-link` (`data-link-label="Ver repositorio"`) y
+     sitio en `data-link2` (`data-link2-label="Ver sitio web"`). Así está Data Fire.
+   - **Regla de los botones**: la ventana los dibuja sola. Van siempre sobre la imagen, abajo a la
+     izquierda, ambos blancos/crema; nunca debajo de la descripción. Un clic en el resto de la imagen
+     abre el primer enlace. No agregues botones a mano.
    - **Imagen**:
      - "ilustración": dibuja un `<svg viewBox="0 0 430 270">` con la paleta del sitio (fondo `#17120d`,
        crema `#efe6d8`, café `#a88b6b`, verde `#7b8f6a`), en el mismo estilo plano de las otras tarjetas.
