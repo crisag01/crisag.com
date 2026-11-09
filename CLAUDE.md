@@ -38,6 +38,8 @@ Idioma de la página y de los mensajes de commit: español de México.
   la ventana de detalle `#pm`. Para darle enlace a la imagen: `data-link="https://..."` (y opcional
   `data-link-label="Ver repositorio"`). Para mostrar código: `<template class="proj-code">…</template>` dentro
   del artículo; si no hay, el recuadro "Código" no aparece.
+  Para agregar un proyecto nuevo usa el comando `/nuevo-proyecto` (`.claude/skills/nuevo-proyecto/SKILL.md`),
+  que tiene los pasos. Cristian llena la plantilla de Word `.claude/plantillas/Plantilla_nuevo_proyecto.docx`.
 - Trayectoria: cuatro carruseles de tarjetas (`.xp`), en este orden: Experiencia (`#xp`), Certificaciones
   (`#xp-cert`, cada tarjeta con su botón "Ver credencial"), Habilidades (`#xp-hab`) y Educación (`#xp-edu`).
   Un solo script mueve todos; al entrar a `#trayectoria` cada uno se centra en la tarjeta del medio
