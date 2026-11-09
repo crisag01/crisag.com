@@ -288,7 +288,10 @@ body{color:#e6dccd}
 .nav{background:rgba(38,32,26,.94);box-shadow:0 0 0 1px rgba(230,220,205,.14),0 8px 28px rgba(0,0,0,.35)}
 .nav a{color:#e6dccd}
 .nav .pill{background:#e6dccd}
-.nav a.on,.nav a.hov{color:#1a1613}
+/* la letra oscura solo va donde está la pastilla (clase .under): las demás opciones siempre son claras.
+   Se oscurece con un pequeño retraso para coincidir con la llegada de la pastilla. */
+.nav a.on,.nav a.hov{color:#e6dccd}
+.nav a.under{color:#1a1613;transition:color .2s .18s}
 .bar .m i{background:#e6dccd;color:#1a1613}
 .statement .sub{color:#e6dccd}
 .trust .p,.shead p,.proj p,.tr li{color:rgba(230,220,205,.8)}
@@ -1044,6 +1047,7 @@ body{color:#e6dccd}
     if (!a) return;
     pill.style.width = a.offsetWidth + "px";
     pill.style.transform = "translateX(" + a.offsetLeft + "px)";
+    links.forEach(l => l.classList.toggle("under", l === a));   // letra oscura solo donde llega la pastilla
   }
   let current = linkOf(PAGE);
   function setCurrent(a) {
