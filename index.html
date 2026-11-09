@@ -1847,7 +1847,7 @@ document.querySelectorAll(".xp").forEach(function(xp){
     var t=card.querySelector("template.proj-code");
     // el recuadro de código solo aparece si el proyecto tiene <template class="proj-code"> con código
     var codeBox=pm.querySelector(".pm-code");
-    if(t){ code.textContent=t.innerHTML.replace(/^\n+|\s+$/g,""); codeBox.hidden=false; }
+    if(t){ code.textContent=t.content.textContent.replace(/^\n+|\s+$/g,""); codeBox.hidden=false; }   // texto ya decodificado (&lt; → <)
     else { code.textContent=""; codeBox.hidden=true; }
     pm.hidden=false; document.documentElement.style.overflow="hidden";
     requestAnimationFrame(function(){ pm.classList.add("open"); closeBtn.focus(); });
