@@ -407,6 +407,16 @@ body{color:#e6dccd}
 .pm-code{display:flex;flex-direction:column;min-height:0}
 .pm-code[hidden]{display:none}
 .pm-code-h{margin-bottom:calc(8*var(--u));font-size:calc(12*var(--u));letter-spacing:.08em;text-transform:uppercase;color:#a89c8b}
+/* Ficha del detalle: etiqueta sobre el título, renglones Contexto / Mi rol / Resultado (data-contexto, data-rol, data-resultado) y subtítulo Herramientas */
+.pm-yr{display:table;height:calc(26*var(--u));line-height:calc(26*var(--u));margin-bottom:calc(12*var(--u));padding:0 calc(12*var(--u));border-radius:calc(26*var(--u));background:#a88b6b;color:#1a1613;font-family:"Inter Tight",system-ui,sans-serif;font-size:calc(12*var(--u));font-weight:500;letter-spacing:0}
+.pm-ficha{display:grid;gap:calc(12*var(--u));margin:calc(22*var(--u)) 0 0;padding:calc(18*var(--u)) 0 0;border-top:1px solid rgba(230,220,205,.12)}
+.pm-ficha div{display:grid;grid-template-columns:calc(108*var(--u)) 1fr;gap:calc(14*var(--u))}
+.pm-ficha dt{padding-top:calc(3*var(--u));font-size:calc(11.5*var(--u));letter-spacing:.08em;text-transform:uppercase;color:#a89c8b}
+.pm-ficha dd{margin:0;font-size:calc(15*var(--u));line-height:1.45;color:#e6dccd}
+.pm-desc .pm-h{margin:calc(22*var(--u)) 0 calc(8*var(--u))}
+.pm-desc .pm-h + .tags{margin-top:0}
+/* Proyectos: textos justificados, sin partir palabras con guion */
+#v-proyectos .proj p,.pm-desc p,.pm-ficha dd{text-align:justify;-webkit-hyphens:none;hyphens:none;overflow-wrap:normal;word-break:normal}
 .pm-code pre{flex:1;margin:0;min-height:calc(150*var(--u));max-height:calc(300*var(--u));overflow:auto;padding:calc(16*var(--u));border-radius:calc(12*var(--u));background:#17120d;box-shadow:0 0 0 1px rgba(230,220,205,.1);font:calc(13*var(--u))/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#e6dccd;white-space:pre}
 .pm-code pre.vacio,.pm-code pre.vacio code{white-space:normal;font-family:"Inter Tight",system-ui,sans-serif;font-style:italic;color:#8f8577}
 @media (max-width:760px){
@@ -416,6 +426,8 @@ body{color:#e6dccd}
   .pm-close{width:36px;height:36px;font-size:22px;top:10px;right:10px}
   .pm-title{font-size:24px;margin-right:40px}
   .pm-desc p{font-size:14.5px}
+  .pm-ficha div{grid-template-columns:1fr;gap:2px}
+  .pm-ficha dd{font-size:14.5px}
   .pm-go{font-size:13.5px;padding:8px 14px}
   .pm-code pre{font-size:12px;max-height:240px}}
 /* Proyectos: tarjetas como las de Trayectoria, en filas de 3 (la última fila queda centrada) */
@@ -429,6 +441,15 @@ body{color:#e6dccd}
 #v-proyectos .proj .yr{order:0;align-self:flex-start;background:#a88b6b;color:#1a1613;border:0}
 #v-proyectos .proj p{max-width:none;margin-top:calc(14*var(--u));font-size:calc(15*var(--u));line-height:1.5}
 #v-proyectos .tags{margin-top:calc(20*var(--u))}
+/* Invitación al clic: pie "Ver detalle →" y pastilla de enlaces sobre la imagen (ambos los crea el script) */
+#v-proyectos .proj{position:relative}
+#v-proyectos .proj .info{justify-content:flex-start}
+#v-proyectos .proj .info .tags{margin-top:auto;padding-top:calc(20*var(--u))}
+.proj-mas{display:flex;align-items:center;gap:calc(8*var(--u));margin-top:calc(20*var(--u));padding-top:calc(16*var(--u));border-top:1px solid rgba(230,220,205,.12);font-size:calc(14*var(--u));font-weight:560;color:#e6dccd}
+.proj-mas span{display:inline-block;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+#v-proyectos .proj:hover .proj-mas span,#v-proyectos .proj:focus-visible .proj-mas span{transform:translateX(calc(6*var(--u)))}
+.proj-enl{position:absolute;top:calc(14*var(--u));right:calc(14*var(--u));z-index:1;display:inline-flex;align-items:center;gap:calc(6*var(--u));padding:calc(6*var(--u)) calc(12*var(--u));border-radius:calc(30*var(--u));background:#e6dccd;color:#1a1613;font-size:calc(12.5*var(--u));font-weight:560;box-shadow:0 calc(6*var(--u)) calc(18*var(--u)) rgba(12,9,6,.35);pointer-events:none}
+@media (max-width:760px){.proj-mas{font-size:14px;margin-top:16px;padding-top:14px}.proj-enl{font-size:12px;padding:5px 11px;top:12px;right:12px}}
 @media (max-width:960px) and (min-width:761px){#v-proyectos .proj{flex-basis:calc((100% - 28*var(--u))/2)}}
 @media (max-width:760px){
   #v-proyectos .panel{gap:18px}
@@ -606,6 +627,40 @@ body{color:#e6dccd}
       <rect x="193" y="222" width="44" height="30" rx="5" fill="#a88b6b"/>
       <rect x="293" y="222" width="44" height="30" rx="5" fill="#2a2018" stroke="#8fb36f" stroke-width="1.5"/>
     </symbol>
+    <symbol id="v-rps" viewBox="0 0 430 270">
+      <rect width="430" height="270" fill="#17120d"/>
+      <g transform="translate(43 27) scale(.8)">
+      <g transform="translate(36 36)">
+        <rect width="200" height="198" rx="6" fill="#241b13" stroke="#4a3a2a"/>
+        <path d="M6 0h188a6 6 0 0 1 6 6v16H0V6a6 6 0 0 1 6-6z" fill="#2e241b"/>
+        <g fill="#4a3a2a"><circle cx="14" cy="11" r="3.5"/><circle cx="26" cy="11" r="3.5"/><circle cx="38" cy="11" r="3.5"/></g>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="12">
+          <text x="14" y="48" fill="#a88b6b">Round: 3</text>
+          <text x="14" y="72" fill="#f1e8da">&gt; piedra</text>
+          <text x="14" y="94" fill="#f1e8da" opacity=".6">PC =&gt; tijeras</text>
+          <text x="14" y="118" fill="#8fb36f" font-weight="700">¡Ganaste!</text>
+          <text x="14" y="146" fill="#f1e8da" opacity=".6">User wins =&gt; 2</text>
+          <text x="14" y="166" fill="#f1e8da" opacity=".6">PC wins =&gt; 1</text>
+          <text x="14" y="188" fill="#f1e8da">&gt;</text>
+        </g>
+        <rect x="26" y="178" width="8" height="13" fill="#f1e8da" opacity=".8"/>
+      </g>
+      <g transform="translate(0 20)">
+      <g font-family="Archivo,Inter Tight,sans-serif">
+        <text x="262" y="66" font-size="11" letter-spacing=".12em" fill="#a88b6b">MARCADOR</text>
+        <text x="262" y="114" font-size="44" font-weight="700" fill="#f1e8da"><tspan fill="#8fb36f">2</tspan> : 1</text>
+        <g font-size="10" letter-spacing=".12em" fill="#a88b6b"><text x="264" y="134">TÚ</text><text x="326" y="134">PC</text></g>
+      </g>
+      <g fill="#241b13" stroke="#4a3a2a"><rect x="309" y="160" width="38" height="38" rx="6"/><rect x="356" y="160" width="38" height="38" rx="6"/></g>
+      <rect x="262" y="160" width="38" height="38" rx="6" fill="#241b13" stroke="#8fb36f" stroke-width="1.5"/>
+      <path d="M270 184c-1-8 4-14 11-14 7 0 12 5 12 11 0 6-5 9-12 9-6 0-10-2-11-6z" fill="#a88b6b"/>
+      <rect x="319" y="168" width="18" height="22" rx="2" fill="#f1e8da"/>
+      <g fill="#a88b6b"><rect x="322" y="173" width="12" height="2" rx="1"/><rect x="322" y="178" width="12" height="2" rx="1"/><rect x="322" y="183" width="8" height="2" rx="1"/></g>
+      <g fill="none" stroke="#f1e8da" stroke-width="2" stroke-linecap="round"><path d="M369 183l12-15M381 183l-12-15"/><circle cx="367" cy="187" r="4"/><circle cx="383" cy="187" r="4"/></g>
+      <text x="262" y="226" font-family="Inter Tight,sans-serif" font-size="11" fill="#a88b6b">Gana quien llegue a 3</text>
+      </g>
+      </g>
+    </symbol>
     <symbol id="v-inventory" viewBox="0 0 430 270">
       <rect width="430" height="270" fill="#17120d"/>
       <g transform="translate(36 36)">
@@ -699,7 +754,7 @@ body{color:#e6dccd}
     <h2 class="disp">Proyectos</h2>
   </div>
   <div class="panel">
-    <article class="proj">
+    <article class="proj" data-contexto="Servicio social en la Unidad de Planeación de la FES Aragón" data-rol="Desarrollé los scripts en Python que extraen y estructuran los datos" data-resultado="Datos de más de 100,000 páginas en PDF listos para la base de datos de una plataforma universitaria">
       <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Un PDF que se convierte en una tabla ordenada"><use href="#v-extract" width="430" height="270"/></svg></div>
       <div class="info">
         <div>
@@ -709,7 +764,7 @@ body{color:#e6dccd}
         <ul class="tags"><li>Python</li><li>OCR</li><li>Excel</li><li>Automatización</li></ul>
       </div>
     </article>
-    <article class="proj">
+    <article class="proj" data-contexto="The Lubrizol Corporation" data-resultado="Consulta de una muestra: de 5 minutos a 20 segundos (93 % más eficiente)">
       <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Una tabla de inventario con una muestra resaltada y el tiempo de consulta pasando de 5 minutos a 20 segundos"><use href="#v-inventory" width="430" height="270"/></svg></div>
       <div class="info">
         <div>
@@ -719,7 +774,7 @@ body{color:#e6dccd}
         <ul class="tags"><li>Excel</li><li>Inventarios</li><li>Eficiencia</li></ul>
       </div>
     </article>
-    <article class="proj">
+    <article class="proj" data-contexto="The Lubrizol Corporation">
       <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Gráfica de dispersión donde el volumen de ventas sube con el precio ofrecido"><use href="#v-prices" width="430" height="270"/></svg></div>
       <div class="info">
         <div>
@@ -729,7 +784,7 @@ body{color:#e6dccd}
         <ul class="tags"><li>Análisis de datos</li><li>Correlación</li><li>Precios</li></ul>
       </div>
     </article>
-    <article class="proj" data-link="https://github.com/LaloRys/nasa-fire-guardians" data-link-label="Ver repositorio" data-link2="https://nasa-fire-guardians.vercel.app/map" data-link2-label="Ver sitio web">
+    <article class="proj" data-link="https://github.com/LaloRys/nasa-fire-guardians" data-link-label="Ver repositorio" data-link2="https://nasa-fire-guardians.vercel.app/map" data-link2-label="Ver sitio web" data-contexto="NASA Space Apps Challenge, con el Capítulo Estudiantil de Innovación Industrial de la FES Aragón" data-rol="Colaborador del equipo" data-resultado="Equipo ganador y Global Nominee en la sede de Londres">
       <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Un globo con órbitas y una llama"><use href="#v-fire" width="430" height="270"/></svg></div>
       <div class="info">
         <div>
@@ -739,7 +794,7 @@ body{color:#e6dccd}
         <ul class="tags"><li>NASA Space Apps</li><li>Global Nominee</li><li>Trabajo en equipo</li></ul>
       </div>
     </article>
-    <article class="proj">
+    <article class="proj" data-contexto="Proyecto personal">
       <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Calendario mensual con recordatorios marcados"><use href="#v-calendar" width="430" height="270"/></svg></div>
       <div class="info">
         <div>
@@ -747,6 +802,16 @@ body{color:#e6dccd}
           <p>Página web tipo calendario para crear recordatorios y abrirla desde el iPhone como si fuera una app. Un proyecto personal para practicar diseño de interfaz y lógica de fechas.</p>
         </div>
         <ul class="tags"><li>Web</li><li>Calendario</li><li>iPhone</li></ul>
+      </div>
+    </article>
+    <article class="proj" data-link="https://github.com/crisag01/Piedra_Papel_Tijeras" data-link-label="Ver repositorio" data-contexto="Proyecto personal de aprendizaje, cuando empezaba con Python" data-resultado="Juego en la terminal que valida las entradas y lleva el marcador hasta tres victorias">
+      <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Una terminal con una partida de piedra, papel o tijeras y el marcador 2 a 1"><use href="#v-rps" width="430" height="270"/></svg></div>
+      <div class="info">
+        <div>
+          <div class="top"><h3 class="disp">Piedra, papel o tijeras (Python)</h3><span class="yr">2023</span></div>
+          <p>Proyecto de aprendizaje en Python para dominar las bases de la lógica de programación. A través de un juego de piedra, papel o tijeras contra la computadora, apliqué ciclos while, condicionales, el módulo random y validación de entradas, con un marcador que define al ganador a tres rondas.</p>
+        </div>
+        <ul class="tags"><li>Python</li><li>Lógica</li><li>Ciclos &amp; Condicionales</li></ul>
       </div>
     </article>
   </div>
@@ -1858,7 +1923,22 @@ document.querySelectorAll(".xp").forEach(function(xp){
     }
     box.replaceChild(holder, box.querySelector(".pm-img")); img=holder;
     title.textContent=card.querySelector("h3").textContent;
-    desc.innerHTML=""; desc.appendChild(card.querySelector(".info p").cloneNode(true)); desc.appendChild(card.querySelector(".tags").cloneNode(true));
+    // etiqueta de la tarjeta (año o lugar) arriba del título
+    var yr=card.querySelector(".yr");
+    if(yr){ var py=document.createElement("span"); py.className="pm-yr"; py.textContent=yr.textContent; title.insertBefore(py,title.firstChild); }
+    desc.innerHTML=""; desc.appendChild(card.querySelector(".info p").cloneNode(true));
+    // ficha opcional: solo aparecen los renglones que la tarjeta tenga (data-contexto, data-rol, data-resultado)
+    var filas=[["Contexto",card.dataset.contexto],["Mi rol",card.dataset.rol],["Resultado",card.dataset.resultado]].filter(function(f){return f[1];});
+    if(filas.length){
+      var dl=document.createElement("dl"); dl.className="pm-ficha";
+      filas.forEach(function(f){
+        var row=document.createElement("div"), dt=document.createElement("dt"), dd=document.createElement("dd");
+        dt.textContent=f[0]; dd.textContent=f[1]; row.appendChild(dt); row.appendChild(dd); dl.appendChild(row);
+      });
+      desc.appendChild(dl);
+    }
+    var hh=document.createElement("div"); hh.className="pm-code-h pm-h"; hh.textContent="Herramientas"; desc.appendChild(hh);
+    desc.appendChild(card.querySelector(".tags").cloneNode(true));
     var t=card.querySelector("template.proj-code");
     // el recuadro de código solo aparece si el proyecto tiene <template class="proj-code"> con código
     var codeBox=pm.querySelector(".pm-code");
@@ -1875,6 +1955,17 @@ document.querySelectorAll(".xp").forEach(function(xp){
   document.querySelectorAll("#v-proyectos .proj").forEach(function(card){
     card.setAttribute("tabindex","0"); card.setAttribute("role","button");
     card.setAttribute("aria-label","Ver detalles: "+card.querySelector("h3").textContent);
+    // invitación al clic: pie "Ver detalle →" en todas las tarjetas
+    var mas=document.createElement("div"); mas.className="proj-mas"; mas.setAttribute("aria-hidden","true");
+    mas.innerHTML='Ver detalle <span>→</span>'; card.querySelector(".info").appendChild(mas);
+    // si el proyecto tiene enlaces, una pastilla sobre la imagen lo avisa ("Ver repositorio" → "Repositorio")
+    var nombres=[[card.dataset.link,card.dataset.linkLabel],[card.dataset.link2,card.dataset.link2Label]]
+      .filter(function(l){return l[0];})
+      .map(function(l){ var s=(l[1]||"Enlace").replace(/^Ver\s+/i,""); return s.charAt(0).toUpperCase()+s.slice(1); });
+    if(nombres.length){
+      var enl=document.createElement("div"); enl.className="proj-enl"; enl.setAttribute("aria-hidden","true");
+      enl.innerHTML=nombres.join(" · ")+' <span>↗</span>'; card.appendChild(enl);
+    }
     card.addEventListener("click",function(){ open(card); });
     card.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(card); } });
   });
