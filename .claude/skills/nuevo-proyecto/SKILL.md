@@ -89,7 +89,13 @@ privados.
      - Captura adjunta: redúcela a ~900 px de ancho en JPEG (calidad ~70, que pese menos de 80 KB) e
        incrústala como `<img src="data:image/jpeg;base64,…" alt="…" style="width:100%;height:100%;object-fit:cover">`.
        Avisa el peso nuevo de `index.html` (límite recomendado: 3 MB).
-4. **Revisa en local** (`python3 -m http.server 8791 --bind 127.0.0.1`, abre `#proyectos`):
+   - **Proyecto reciente de Inicio (siempre)**: cada proyecto nuevo pasa a ser el "Proyecto reciente" de
+     Inicio (`<div class="abs out rise">` en `v-inicio`). Cambia el `<h2>` por el título, el `aria-label`
+     del `<a class="card">` y su imagen: con ilustración,
+     `<svg class="vis" viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#v-…" width="430" height="270"/></svg>`;
+     con logo o imagen sobre fondo claro, `<a class="card card-claro">` y un `<div class="vis">` con el `<img>`.
+4. **Revisa en local** (`python3 -m http.server 8791 --bind 127.0.0.1`, abre `#proyectos` y `#inicio`):
+   - en Inicio, "Proyecto reciente" muestra el proyecto nuevo;
    - la tarjeta aparece en su lugar y las filas siguen de 3 (la última centrada);
    - la ventana abre con imagen, título, descripción y herramientas; el enlace abre en otra pestaña;
    - computadora y celular (375 px), sin desbordamiento horizontal ni errores en la consola.
