@@ -635,6 +635,42 @@ body{color:#e6dccd}
       </g>
       </g>
     </symbol>
+    <symbol id="v-informes" viewBox="0 0 430 270">
+      <rect width="430" height="270" fill="#17120d"/>
+      <g transform="translate(63 39) scale(.72)">
+      <g transform="translate(62 58)">
+        <g stroke="#4a3a2a"><rect x="24" y="0" width="100" height="130" rx="5" fill="#1f1711"/><rect x="16" y="8" width="100" height="130" rx="5" fill="#221a12"/><rect x="8" y="16" width="100" height="130" rx="5" fill="#241b13"/></g>
+        <g transform="translate(0 24)">
+          <rect width="100" height="130" rx="5" fill="#2a2017" stroke="#a88b6b" stroke-opacity=".6"/>
+          <rect x="0" y="0" width="24" height="14" rx="5" fill="#c9714a"/><text x="12" y="10" text-anchor="middle" font-family="Inter Tight,sans-serif" font-size="7" font-weight="700" fill="#efe6d8">PDF</text>
+          <text x="10" y="32" font-family="Inter Tight,sans-serif" font-size="8" font-weight="700" fill="#8fb36f">Nombre:</text>
+          <rect x="44" y="26" width="46" height="6" rx="2" fill="#efe6d8" opacity=".75"/>
+          <rect x="6" y="21" width="88" height="15" rx="3" fill="none" stroke="#8fb36f" stroke-width="1.5"/>
+          <g fill="#a88b6b" opacity=".4"><rect x="10" y="48" width="80" height="3" rx="1"/><rect x="10" y="58" width="72" height="3" rx="1"/><rect x="10" y="68" width="78" height="3" rx="1"/><rect x="10" y="78" width="60" height="3" rx="1"/><rect x="10" y="88" width="76" height="3" rx="1"/><rect x="10" y="98" width="52" height="3" rx="1"/></g>
+          <text x="50" y="120" text-anchor="middle" font-family="Inter Tight,sans-serif" font-size="7.5" letter-spacing=".1em" fill="#a88b6b">PÁG. 1 · 5 · 9…</text>
+        </g>
+      </g>
+      <g font-family="Archivo,Inter Tight,sans-serif" text-anchor="middle">
+        <text x="215" y="126" font-size="9" font-weight="700" letter-spacing=".14em" fill="#8fb36f">×4</text>
+        <path d="M199 136h28m-6-6l6 6-6 6" fill="none" stroke="#efe6d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g transform="translate(238 62)">
+        <rect width="122" height="146" rx="6" fill="#efe6d8"/>
+        <rect width="122" height="20" rx="6" fill="#7b8f6a"/><rect y="14" width="122" height="6" fill="#7b8f6a"/>
+        <g font-family="Inter Tight,sans-serif" font-size="7.5" font-weight="700" fill="#efe6d8"><text x="8" y="13">PDF</text><text x="56" y="13">Informes</text><text x="94" y="13">Únicos</text></g>
+        <g stroke="#17120d" stroke-opacity=".14"><path d="M0 40h122M0 60h122M0 80h122M0 100h122M0 120h122M50 20v126M88 20v126"/></g>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="7.5" fill="#241b13">
+          <text x="64" y="33">24</text><text x="100" y="33">18</text>
+          <text x="64" y="53">31</text><text x="100" y="53">22</text>
+          <text x="64" y="73">17</text><text x="100" y="73">15</text>
+          <text x="64" y="93">28</text><text x="100" y="93">20</text>
+          <text x="64" y="113">12</text><text x="100" y="113">11</text>
+        </g>
+        <g fill="#a88b6b" opacity=".7"><rect x="8" y="28" width="34" height="4" rx="1"/><rect x="8" y="48" width="30" height="4" rx="1"/><rect x="8" y="68" width="36" height="4" rx="1"/><rect x="8" y="88" width="28" height="4" rx="1"/><rect x="8" y="108" width="32" height="4" rx="1"/></g>
+        <text x="61" y="138" text-anchor="middle" font-family="Inter Tight,sans-serif" font-size="8" letter-spacing=".1em" fill="#7b8f6a" font-weight="700">REPORTE.CSV</text>
+      </g>
+      </g>
+    </symbol>
     <symbol id="v-rps" viewBox="0 0 430 270">
       <rect width="430" height="270" fill="#17120d"/>
       <g transform="translate(43 27) scale(.8)">
@@ -713,9 +749,9 @@ body{color:#e6dccd}
 
     <div class="abs out rise">
       <div class="row"><small>Proyecto reciente</small></div>
-      <h2>Extractor de Horarios</h2>
-      <a class="card" href="#proyectos" aria-label="Ver el proyecto Extractor de Horarios">
-        <svg class="vis" viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#v-horarios" width="430" height="270"/></svg>
+      <h2>Contador de Informes</h2>
+      <a class="card" href="#proyectos" aria-label="Ver el proyecto Contador de Informes">
+        <svg class="vis" viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#v-informes" width="430" height="270"/></svg>
         <span class="go" aria-hidden="true">→</span>
         <span class="prog" aria-hidden="true"><i></i></span>
       </a>
@@ -745,6 +781,16 @@ body{color:#e6dccd}
     <h2 class="disp">Proyectos</h2>
   </div>
   <div class="panel">
+    <article class="proj" data-link="https://github.com/crisag01/Contador_Informes_PDF" data-link-label="Ver repositorio" data-contexto="Proyecto solicitado en el servicio social: había que saber cuántos informes y cuántos maestros distintos venían en cada PDF, sin contarlos a mano. Todo debía correr de manera local." data-rol="Escribir el código en Python, con ayuda de la IA, para leer los PDFs, encontrar el nombre de cada informe y armar el resumen, sin compartir ningún documento." data-resultado="Un CSV con el conteo de informes y de maestros únicos por PDF, listo para abrir en Excel.">
+      <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Un PDF de informes que se revisa de 4 en 4 páginas y se resume en una tabla CSV"><use href="#v-informes" width="430" height="270"/></svg></div>
+      <div class="info">
+        <div>
+          <div class="top"><h3 class="disp">Contador de Informes</h3><span class="yrs"><span class="yr">2026</span><span class="yr">Servicio Social</span></span></div>
+          <p>Revisa una carpeta de PDFs con informes de maestros y cuenta cuántos informes trae cada uno y cuántos maestros distintos aparecen. Lee el nombre en la primera página de cada informe y deja el resumen en un CSV listo para Excel.</p>
+        </div>
+        <ul class="tags"><li>Python</li><li>PyPDF2</li><li>pandas</li><li>Regex</li></ul>
+      </div>
+    </article>
     <article class="proj" data-link="https://github.com/crisag01/Extractor_Horarios" data-link-label="Ver repositorio" data-contexto="Proyecto solicitado de extracción de datos para generación de informes y una posible futura plataforma. El archivo debía correr de manera local, sin que ningún dato se guardara en ninguna IA." data-rol="Generar el código con mis conocimientos en Python y ayuda de la IA para automatizar el proceso, sin comprometer ninguna información." data-resultado="Se entregaron tablas en Excel con toda la información solicitada.">
       <div class="vis"><svg viewBox="0 0 430 270" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Una captura de horario que, con OCR, se convierte en una tabla de Excel"><use href="#v-horarios" width="430" height="270"/></svg></div>
       <div class="info">
