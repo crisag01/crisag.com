@@ -40,6 +40,8 @@ Idioma de la página y de los mensajes de commit: español de México.
   `data-link2-label`. REGLA: los botones de enlace van siempre sobre la imagen (abajo a la izquierda),
   todos blancos/crema, nunca debajo de la descripción; un clic en el resto de la imagen abre el primero. Para mostrar código: `<template class="proj-code">…</template>` dentro
   del artículo; si no hay, el recuadro "Código" no aparece.
+  Etiqueta de la tarjeta: `<span class="yr">2023</span>`; para dos o más, agrúpalas en
+  `<span class="yrs"><span class="yr">…</span><span class="yr">…</span></span>` (así está Data Fire).
   Ficha opcional de la ventana de detalle: `data-contexto`, `data-rol` y `data-resultado` en el artículo
   (renglones Contexto / Mi rol / Resultado; solo aparecen los que existan). Cada tarjeta recibe sola
   su pie "Ver detalle →" y, si tiene enlaces, una pastilla sobre la imagen (las crea el script).
