@@ -1,13 +1,17 @@
 ---
 name: nuevo-proyecto
-description: Agrega un proyecto nuevo a la sección Proyectos de crisag.com a partir del formulario de Cristian (título, etiqueta, descripción, herramientas, enlace, imagen y código). Úsalo cuando Cristian pida subir, agregar o publicar un proyecto en su sitio, o cuando pegue el formulario "NUEVO PROYECTO".
+description: Agrega un proyecto nuevo a la sección Proyectos de crisag.com a partir de la plantilla de Word o el formulario de Cristian (título, etiqueta, descripción, herramientas, repositorio de GitHub, sitio o demo, posición e imagen). Úsalo cuando Cristian pida subir, agregar o publicar un proyecto en su sitio, o cuando mande la plantilla "NUEVO PROYECTO".
 ---
 
 # Agregar un proyecto a crisag.com
 
-Cristian pega el formulario de abajo (lleno). Tú lo conviertes en una tarjeta de Proyectos con su ventana
-de detalle, lo pruebas en local y, solo cuando él lo apruebe, haces lo de GitHub. Sigue las reglas de
-`CLAUDE.md` (rama nueva, mostrar cada comando de Git y esperar su sí, nunca tocar las cadenas base64).
+Cristian manda la plantilla de Word (o el formulario de texto) llena. Tú la conviertes en una tarjeta de
+Proyectos con su ventana de detalle, la pruebas en local y, solo cuando él la apruebe, haces lo de GitHub.
+Sigue las reglas de `CLAUDE.md` (rama nueva, mostrar cada comando de Git y esperar su sí, nunca tocar las
+cadenas base64).
+
+El código de cada proyecto vive en su **repositorio de GitHub**; la tarjeta solo enlaza a él. Ya no se
+pide ni se copia código al sitio.
 
 ## Si manda la plantilla de Word (lo normal)
 
@@ -16,16 +20,17 @@ Cuando mande una llena (`.docx`):
 
 1. Cópiala a una carpeta nueva y vacía del scratchpad (no la abras dentro del repositorio).
 2. Lee el texto: `textutil -convert txt -stdout plantilla.docx`. Cada campo aparece como su etiqueta
-   (Título, Etiqueta, Descripción, …), una línea de ayuda gris y debajo lo que él escribió.
-   Ignora los textos de ejemplo que no haya borrado ("Ej. …", "Escribe aquí…", "https://…", "# pega aquí…").
+   (Título, Etiqueta, Descripción, Herramientas, Repositorio en GitHub, Sitio o demo, Posición, Imagen),
+   una línea de ayuda y debajo lo que él escribió. Ignora los textos de ejemplo que no haya borrado
+   ("Ej. …", "Escribe aquí…", "https://github.com/crisag01/…", "https://…", "Pega aquí la imagen…").
 3. Si pegó una imagen, sácala con `unzip -o plantilla.docx 'word/media/*' -d <carpeta>`
    (es la imagen del campo Imagen). Si no hay imagen y escribió "ilustración", dibújala.
 4. Muéstrale en una lista corta lo que entendiste de cada campo y sigue con los pasos de abajo.
 
 ## Si lo manda como texto
 
-Si Cristian pide agregar un proyecto pero no manda la plantilla ni el formulario, mándale la plantilla de
-Word o muéstrale este formulario de texto para que lo llene:
+Si Cristian pide agregar un proyecto pero no manda nada, mándale la plantilla de Word o muéstrale este
+formulario de texto para que lo llene:
 
 ```
 NUEVO PROYECTO
@@ -33,15 +38,16 @@ Título:
 Etiqueta (año o lugar, ej. "[2026]" o "Lubrizol"): 
 Descripción (2 a 4 líneas): 
 Herramientas (separadas por coma, 2 a 5): 
-Enlace (repositorio, sitio o demo; o "ninguno"): 
-Texto del botón del enlace (ej. "Ver repositorio", "Ver sitio web"; opcional): 
-Imagen (adjunta una captura, o escribe "ilustración" para que Claude la dibuje): 
+Repositorio en GitHub (o "ninguno"): 
+Sitio o demo (opcional): 
 Posición (ej. "al inicio", "al final", "después de Data Fire"; por defecto al inicio): 
-Código (pega 10 a 30 líneas, o "ninguno"):
+Imagen (adjunta una captura, o escribe "ilustración" para que Claude la dibuje): 
 ```
 
 Campos obligatorios: Título, Etiqueta, Descripción, Herramientas. Si falta alguno, pregúntalo antes de
-seguir; no lo inventes. Tampoco inventes código ni enlaces: si dice "ninguno", se omiten.
+seguir; no lo inventes. Tampoco inventes enlaces: si dice "ninguno" o lo deja vacío, se omite.
+Si el repositorio parece de un proyecto de empresa (por ejemplo Lubrizol), recuérdale no publicar datos
+privados.
 
 ## Pasos
 
@@ -59,13 +65,14 @@ seguir; no lo inventes. Tampoco inventes código ni enlaces: si dice "ninguno", 
        </div>
        <ul class="tags"><li>HERRAMIENTA</li>…</ul>
      </div>
-     <template class="proj-code">CÓDIGO</template>
    </article>
    ```
-   - Sin enlace: quita `data-link` y `data-link-label`. Sin código: quita el `<template>` (el recuadro
-     "Código" se oculta solo).
-   - **Código**: escapa `&` → `&amp;`, `<` → `&lt;`, `>` → `&gt;` antes de ponerlo en el `<template>`.
-     Respeta la sangría tal cual.
+   - **Enlace de la imagen** (`data-link`): el repositorio de GitHub, con `data-link-label="Ver repositorio"`.
+     Si no tiene repositorio pero sí sitio o demo, usa el sitio con `data-link-label="Ver sitio web"`.
+     Sin ninguno de los dos, quita `data-link` y `data-link-label`.
+   - **Si tiene repositorio Y sitio**: la ventana hoy solo muestra un botón. Pon el repositorio en la imagen
+     y avísale a Cristian que, para mostrar también el sitio, hay que agregar un segundo botón a la
+     ventana (`#pm`); pregúntale si lo hacemos en esa misma rama.
    - **Imagen**:
      - "ilustración": dibuja un `<svg viewBox="0 0 430 270">` con la paleta del sitio (fondo `#17120d`,
        crema `#efe6d8`, café `#a88b6b`, verde `#7b8f6a`), en el mismo estilo plano de las otras tarjetas.
@@ -74,7 +81,7 @@ seguir; no lo inventes. Tampoco inventes código ni enlaces: si dice "ninguno", 
        Avisa el peso nuevo de `index.html` (límite recomendado: 3 MB).
 4. **Revisa en local** (`python3 -m http.server 8791 --bind 127.0.0.1`, abre `#proyectos`):
    - la tarjeta aparece en su lugar y las filas siguen de 3 (la última centrada);
-   - la ventana abre con imagen, título, descripción, herramientas y código; el enlace abre en otra pestaña;
+   - la ventana abre con imagen, título, descripción y herramientas; el enlace abre en otra pestaña;
    - computadora y celular (375 px), sin desbordamiento horizontal ni errores en la consola.
    Manda capturas a Cristian.
 5. **Cuando apruebe**: muestra los comandos (`git add index.html`, commit en español con la línea
